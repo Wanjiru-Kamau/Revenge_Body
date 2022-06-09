@@ -2,11 +2,13 @@ package com.njiruk.revenge
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EdgeEffect
 import android.widget.EditText
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import java.util.regex.Pattern
 
 class Sign_UpActivity : AppCompatActivity() {
     lateinit var btnsignup: Button
@@ -69,7 +71,10 @@ class Sign_UpActivity : AppCompatActivity() {
             tilemail.error="Email is required"
             error = true
 
-
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            tilemail.error = "Not a valid email"
+            error=true
         }
         var password = etpassword.text.toString()
         if (password.isBlank()){
@@ -79,6 +84,11 @@ class Sign_UpActivity : AppCompatActivity() {
         var confirm = etconfirm.text.toString()
         if (confirm.isBlank()){
             tilconfirm.error= " Kindly confirm password"
+        }
+
+        var equals=etpassword==etconfirm
+        if (etpassword !=etconfirm){
+            tilconfirm.error="invalid"
         }
 
     }
