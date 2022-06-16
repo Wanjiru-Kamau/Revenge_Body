@@ -23,9 +23,6 @@ class LoginActivity : AppCompatActivity() {
         castView()
     }
 
-
-
-
         fun castView(){
             btnlogin = findViewById(R.id.btnlogin)
             tilEmail = findViewById(R.id.tilEmail)
